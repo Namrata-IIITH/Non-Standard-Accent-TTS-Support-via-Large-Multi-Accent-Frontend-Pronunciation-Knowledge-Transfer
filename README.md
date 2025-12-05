@@ -1,7 +1,7 @@
 # Non-Standard-Accent-TTS-Support-via-Large-Multi-Accent-Frontend-Pronunciation-Knowledge-Transfer
 A multi-accent text-to-phoneme frontend that models pronunciation variations across 14 English accents, with a focus on data efficiency and accent similarity transfer.
 
-This repository contains the full implementation, dataset preparation scripts, experiment configurations, and evaluation code for reproducing our project based on Berger et al., Interspeech 2025.
+This repository contains an implementation, dataset preparation scripts, experiment configurations, and evaluation code for reproducing our project based on Berger et al., Interspeech 2025.
 The goal is to build a multi-accent text-to-phoneme frontend capable of modeling pronunciation variations across 14 English accents, with a focus on data efficiency and accent similarity transfer.
 
 1. **Project Overview**
@@ -19,7 +19,79 @@ Study scaling of pronunciation knowledge transfer (199k → 1k → 500)
 
 Analyze role of accent similarity in transfer learning
 
-2. **Installation & Environment Setup**
+**Experiments Implemented**
+**Experiment 1: Baseline Evaluation**
+Compare 14-accent model vs single-accent model (EDI) using:
+1. Seen word accuracy
+2. Unseen word accuracy
+3. Boundary accuracy
+
+**Experiment 2: Data Scaling (1k)**
+Fine-tune baseline model with:
+1. 1k sentences per accent (with ABD1 source augmentation)
+2. Evaluate unseen word accuracy on HiFi-TTS EDI.
+
+**Experiment 3: Accent Similarity Transfer**
+Using 1k setup:
+1. High similarity: ABD1 → EDI
+2. Low similarity: GNZ → EDI
+Measure how accent similarity affects prediction accuracy.
+
+**Steps to run on local machine:**
+**1. Clone the Repository**
+
+Clone the project repository:
+https://github.com/sunsiqitos/multi_accent_s2s_frontend
+
+**2. Add Configuration Files**
+Place the following files into the respective folders inside the cloned repository:
+edi_uni.json → config/edi/
+multi_14_accents.json → config/multi/
+
+**3. Replace the Dataset Folder**
+Replace the repository’s existing dataset folder with the dataset folder provided in the Hugging Face link:
+(link)
+
+**4. Add Required Output and Checkpoint Folders**
+From the provided link, copy these folders into the cloned repository:
+checkpoints
+checkpoints_uni
+uni_output
+results_multi
+
+(link)
+
+**5. Add Supporting Python Files**
+
+Place the following scripts in the root directory of the cloned repository:
+score_uni.py – calculates scores for seen, unseen, and boundary words for the EDI accent model
+score.py – calculates scores for seen, unseen, and boundary words for the multi-accent model
+generate_config.py – configuration generator for the EDI model
+1k_data.py – randomly samples 1k sentences from the dataset
+
+**6. Training and Inference**
+Training and inference commands are already provided in the repository’s README.
+Use the same commands with the updated paths from your setup.
+
+**7. Evaluation Commands**
+
+a. **EDI (Uni-accent) Model**
+
+python3 score_uni.py \
+  --train_src dataset/unilex_edi/src-train.txt \
+  --test_src dataset/unilex_edi/src-test.txt \
+  --test_tgt dataset/unilex_edi/tgt-test.txt \
+  --pred_tgt uni_output/uni_edi/edi/src-test.ph.txt
+
+b. **Multi-accent Model**
+
+python3 score.py \
+  --train_src dataset/unilex_edi/src-train.txt \
+  --test_src dataset/unilex_edi/src-test.txt \
+  --test_tgt dataset/unilex_edi/tgt-test.txt \
+  --pred_tgt results_multi/....../src-test.ph.txt
+
+**Installation & Environment Setup**
 Create Conda Environment:
 conda create -n multiaccent python=3.9
 conda activate multiaccent
@@ -28,20 +100,17 @@ pip install -r requirements.txt
 **Install Festival + Unilex**
 
 Follow installation steps for Festival TTS and ensure the lexicons are placed in:
-
 festival/lib/dicts/unilex/*.scm
 
-4. **Preparing the Pronunciation Dataset**
+**Preparing the Pronunciation Dataset**
 **Step 1: Build Accent Lexicons**
 python data_scripts/build_lexicons.py
-
 This converts all 14 Unisyn accent outputs into Festival .scm lexicons.
 
 **Step 2: Bootstrap src/tgt Text–Phoneme Files**
 python data_scripts/bootstrap_dataset.py
 
 This generates:
-
 unilex_<accent>/src-train.txt
 unilex_<accent>/tgt-train.txt
 unilex_<accent>/src-val.txt
@@ -51,16 +120,7 @@ unilex_<accent>/tgt-test.txt
 
 All OOV sentences are removed to ensure phoneme consistency.
 
-5. **Accent Similarity Analysis**
-
-Compute the Levenshtein similarity matrix for all 14 accents:
-
-python data_scripts/compute_similarity.py
-
-Generates:
-results/similarity_heatmap.png
-
-6. **Training the Models**
+**Training the Models**
 **A. Full 14-Accent Baseline (Ceiling Baseline)**
 python training/train.py \
     --config_path configs/multi_14accent.json \
@@ -78,7 +138,7 @@ python training/fine_tune.py \
     --checkpoint checkpoints/multi14/step_x_epoch_y.pth.tar \
     --output_path checkpoints/multi14_1k
 
-7. **Inference**
+**Inference**
 python inference/inference.py \
     --config_fpath checkpoints/multi14/config.json \
     --src_vocab_fpath checkpoints/multi14/vocab/src.vocab \
@@ -89,61 +149,24 @@ python inference/inference.py \
     --lang <accent_index> \
     --decoding_method greedy
 
-8. **Evaluation: Unseen Word Accuracy**
+**Evaluation: Unseen Word Accuracy**
 python inference/compute_metrics.py \
     --gold datasets/unilex_edi/tgt-test.txt \
     --pred results/predictions/pred.txt \
     --output results/metrics_edi.json
 
 This computes:
-
 Seen Word Accuracy
-
 Unseen Word Accuracy
-
 Boundary Accuracy
 
-9. **Experiments Implemented**
-**Experiment 1: Baseline Evaluation**
-
-Compare 14-accent model vs single-accent model (EDI) using:
-
-Seen word accuracy
-
-Unseen word accuracy
-
-Boundary accuracy
-
-**Experiment 2: Data Scaling (1k)**
-
-Fine-tune baseline model with:
-
-1k sentences per accent (with ABD1 source augmentation)
-
-Evaluate unseen word accuracy on HiFi-TTS EDI.
-
-**Experiment 3: Accent Similarity Transfer**
-
-Using 1k setup:
-
-High similarity: ABD1 → EDI
-
-Low similarity: GNZ → EDI
-
-Measure how accent similarity affects prediction accuracy.
-
-10. **Results**
-
+**Results**
 Results tables and plots are provided in:
 
 results/
 
 Including:
-
 similarity_heatmap.png
-
 baseline_results.txt
-
 exp1k_abd1_edi_results.txt
-
 exp1k_gnz_edi_results.txt
