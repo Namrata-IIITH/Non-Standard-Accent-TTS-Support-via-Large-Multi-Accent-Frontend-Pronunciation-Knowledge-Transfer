@@ -1,0 +1,219 @@
+{
+    "experiment_name": "tc_multi_14_accents",
+    "run_description": "Large Multi-Accent Baseline (14 Accents)",
+    "epochs": 6,
+    "batch_size": 32,
+    "save_step": 5000,
+    "batch_group_size": 100,
+    "max_seq_len": 600,
+    "learning_rate": 5e-05,
+    "r": 1,
+    "has_postnet": false,
+    "has_stopnet": false,
+    "has_prenet": false,
+    "enc_embedding_dim": 256,
+    "dec_embedding_dim": 256,
+    "enc_hidden_dim": 512,
+    "dec_hidden_dim": 512,
+    "post_hidden_dim": 512,
+    "data": {
+        "abd1": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_abd1/src-train.txt",
+                "path_tgt": "dataset/unilex_abd1/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_abd1/src-val.txt",
+                "path_tgt": "dataset/unilex_abd1/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_abd1/src-test.txt",
+                "path_tgt": "dataset/unilex_abd1/tgt-test.txt"
+            }
+        },
+        "abc": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_abc/src-train.txt",
+                "path_tgt": "dataset/unilex_abc/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_abc/src-val.txt",
+                "path_tgt": "dataset/unilex_abc/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_abc/src-test.txt",
+                "path_tgt": "dataset/unilex_abc/tgt-test.txt"
+            }
+        },
+        "ccl1": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_ccl1/src-train.txt",
+                "path_tgt": "dataset/unilex_ccl1/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_ccl1/src-val.txt",
+                "path_tgt": "dataset/unilex_ccl1/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_ccl1/src-test.txt",
+                "path_tgt": "dataset/unilex_ccl1/tgt-test.txt"
+            }
+        },
+        "cdf": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_cdf/src-train.txt",
+                "path_tgt": "dataset/unilex_cdf/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_cdf/src-val.txt",
+                "path_tgt": "dataset/unilex_cdf/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_cdf/src-test.txt",
+                "path_tgt": "dataset/unilex_cdf/tgt-test.txt"
+            }
+        },
+        "edi": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_edi/src-train.txt",
+                "path_tgt": "dataset/unilex_edi/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_edi/src-val.txt",
+                "path_tgt": "dataset/unilex_edi/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_edi/src-test.txt",
+                "path_tgt": "dataset/unilex_edi/tgt-test.txt"
+            }
+        },
+        "gam": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_gam/src-train.txt",
+                "path_tgt": "dataset/unilex_gam/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_gam/src-val.txt",
+                "path_tgt": "dataset/unilex_gam/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_gam/src-test.txt",
+                "path_tgt": "dataset/unilex_gam/tgt-test.txt"
+            }
+        },
+        "gau": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_gau/src-train.txt",
+                "path_tgt": "dataset/unilex_gau/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_gau/src-val.txt",
+                "path_tgt": "dataset/unilex_gau/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_gau/src-test.txt",
+                "path_tgt": "dataset/unilex_gau/tgt-test.txt"
+            }
+        },
+        "gnz": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_gnz/src-train.txt",
+                "path_tgt": "dataset/unilex_gnz/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_gnz/src-val.txt",
+                "path_tgt": "dataset/unilex_gnz/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_gnz/src-test.txt",
+                "path_tgt": "dataset/unilex_gnz/tgt-test.txt"
+            }
+        },
+        "lds": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_lds/src-train.txt",
+                "path_tgt": "dataset/unilex_lds/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_lds/src-val.txt",
+                "path_tgt": "dataset/unilex_lds/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_lds/src-test.txt",
+                "path_tgt": "dataset/unilex_lds/tgt-test.txt"
+            }
+        },
+        "ldsi": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_ldsi/src-train.txt",
+                "path_tgt": "dataset/unilex_ldsi/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_ldsi/src-val.txt",
+                "path_tgt": "dataset/unilex_ldsi/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_ldsi/src-test.txt",
+                "path_tgt": "dataset/unilex_ldsi/tgt-test.txt"
+            }
+        },
+        "nyc": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_nyc/src-train.txt",
+                "path_tgt": "dataset/unilex_nyc/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_nyc/src-val.txt",
+                "path_tgt": "dataset/unilex_nyc/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_nyc/src-test.txt",
+                "path_tgt": "dataset/unilex_nyc/tgt-test.txt"
+            }
+        },
+        "nyci": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_nyc1/src-train.txt",
+                "path_tgt": "dataset/unilex_nyc1/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_nyc1/src-val.txt",
+                "path_tgt": "dataset/unilex_nyc1/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_nyc1/src-test.txt",
+                "path_tgt": "dataset/unilex_nyc1/tgt-test.txt"
+            }
+        },
+        "rpx": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_rpx/src-train.txt",
+                "path_tgt": "dataset/unilex_rpx/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_rpx/src-val.txt",
+                "path_tgt": "dataset/unilex_rpx/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_rpx/src-test.txt",
+                "path_tgt": "dataset/unilex_rpx/tgt-test.txt"
+            }
+        },
+        "sca": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_sca/src-train.txt",
+                "path_tgt": "dataset/unilex_sca/tgt-train.txt"
+            },
+            "valid": {
+                "path_src": "dataset/unilex_sca/src-val.txt",
+                "path_tgt": "dataset/unilex_sca/tgt-val.txt"
+            },
+            "test": {
+                "path_src": "dataset/unilex_sca/src-test.txt",
+                "path_tgt": "dataset/unilex_sca/tgt-test.txt"
+            }
+        }
+    },
+    "src_vocab": "vocab/src.vocab",
+    "tgt_vocab": "vocab/tgt.vocab"
+}
