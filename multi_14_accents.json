@@ -1,7 +1,7 @@
 {
     "experiment_name": "tc_multi_14_accents",
     "run_description": "Large Multi-Accent Baseline (14 Accents)",
-    "epochs": 6,
+    "epochs": 100,
     "batch_size": 32,
     "save_step": 5000,
     "batch_group_size": 100,
