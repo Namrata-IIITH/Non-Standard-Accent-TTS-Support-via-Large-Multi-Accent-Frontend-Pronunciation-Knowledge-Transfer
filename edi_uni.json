@@ -1,0 +1,38 @@
+{
+    "data": {
+        "edi": {
+            "corpus_1": {
+                "path_src": "dataset/unilex_edi/src-train.txt", 
+                "path_tgt": "dataset/unilex_edi/tgt-train.txt"
+            }, 
+            "test": {
+                "path_src": "dataset/unilex_edi/src-test.txt", 
+                "path_tgt": "dataset/unilex_edi/tgt-test.txt"
+            }, 
+            "valid": {
+                "path_src": "dataset/unilex_edi/src-val.txt", 
+                "path_tgt": "dataset/unilex_edi/tgt-val.txt"
+            }
+        }
+    }, 
+    "post_hidden_dim": 512, 
+    "tgt_vocab": "vocab/tgt.vocab", 
+    "verbose": true, 
+    "batch_group_size": 100, 
+    "has_prenet": false, 
+    "learning_rate": 5e-05, 
+    "src_vocab": "vocab/src.vocab", 
+    "dec_hidden_dim": 512, 
+    "batch_size": 32, 
+    "run_description": "Uni-accent Edinburgh baseline", 
+    "epochs": 6, 
+    "max_seq_len": 600, 
+    "experiment_name": "edi_uni_accent", 
+    "r": 1, 
+    "enc_embedding_dim": 256, 
+    "save_step": 5000, 
+    "dec_embedding_dim": 256, 
+    "enc_hidden_dim": 512, 
+    "has_stopnet": false, 
+    "has_postnet": false
+}
